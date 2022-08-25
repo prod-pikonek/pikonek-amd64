@@ -1,0 +1,10 @@
+/var/log/pikonek.log {
+	# su #
+	daily
+	copytruncate
+	rotate 1
+	compress
+	delaycompress
+	notifempty
+	nomail
+}

@@ -1,0 +1,6 @@
+domain-needed
+bind-dynamic
+bogus-priv
+domain=pi.konek
+dhcp-authoritative
+dhcp-script=/etc/pikonek/scripts/check_client.sh

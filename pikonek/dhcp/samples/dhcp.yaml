@@ -1,0 +1,48 @@
+addn_hosts:
+- host: /etc/pikonek/blocked/pisokonekblockedlist
+- host: /etc/pikonek/configs/pikonek.host
+- host: /etc/pikonek/blocked/fakenews
+- host: /etc/pikonek/blocked/social
+- host: /etc/pikonek/blocked/adware
+- host: /etc/pikonek/blocked/porn
+- host: /etc/pikonek/blocked/gambling
+bogus_priv: true
+conf_file: /etc/blocked/domains
+dhcp_authoritative: true
+dhcp_option:
+- interface: eth1
+  ipaddress: 10.0.0.15
+  option: 3
+- interface: eth2
+  ipaddress: 10.0.0.11
+  option: 3
+dhcp_range:
+- end: 10.0.0.200
+  interface: eth1
+  lease_time: infinite
+  start: 10.0.0.100
+  subnet: 255.255.255.0
+- end: 10.0.0.200
+  interface: eth2
+  lease_time: infinite
+  start: 10.0.0.100
+  subnet: 255.255.255.0
+domain: portal.pikonek
+domain_needed: true
+hosts:
+- ip: 10.0.0.1
+  name: portal.pikonek
+interface:
+- name: eth1
+mac_blocked_list: []
+name_server:
+- ip: 8.8.8.8
+- ip: 8.8.4.4
+no_hosts: false
+no_resolv: false
+resolv_file: /etc/pikonek/configs/pikonek.resolv
+static_mapping:
+- host: Falcon
+  interface: eth1
+  ip: 10.0.0.130
+  mac: 11:22:33:44:55:66

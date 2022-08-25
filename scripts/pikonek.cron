@@ -1,0 +1,8 @@
+# PiKonek: Pisowifi and Firewall Management
+#
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# Check active session
+*/3 * *  * * root /etc/pikonek/check_active_session.sh
+# @reboot root timedatectl set-timezone "Asia/Manila"

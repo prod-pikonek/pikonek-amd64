@@ -1,0 +1,10 @@
+packages/**
+configs/packages/captive_portal.yaml
+configs/packages/coinslot.yaml
+ngrok.yaml
+pikonek_dhcp_mapping.yaml
+pikonek_net_mapping.yaml
+pikonek_wpa_mapping.yaml
+pikonek.host
+pikonek.resolv
+pikonekInit.cfg
