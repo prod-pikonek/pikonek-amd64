@@ -10,11 +10,7 @@ readonly PIKONEK_CORE_ADMIN_SCRIPT_DIR="/etc/pikonek"
 
 updatePikonekFunc() {
   shift
-  if [[ "$1" == "--force" ]]; then
-    "${PIKONEK_SCRIPT_DIR}"/install.sh "--update"
-  else
-    "${PIKONEK_SCRIPT_DIR}"/update.sh "$@"
-  fi
+  "${PIKONEK_SCRIPT_DIR}"/update.sh "$@"
   exit 0
 }
 
