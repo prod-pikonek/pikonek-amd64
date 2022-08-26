@@ -125,3 +125,4 @@ pikonek/_subcoinacceptor.py
 setup.py
 start.py
 pikonekbin.py
+templates/public/portal_image/**
