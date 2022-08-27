@@ -23,6 +23,39 @@ PIDFILE=/var/run/$DAEMON_NAME.pid
 
 . /lib/lsb/init-functions
 
+deactivate () {
+    # reset old environment variables
+    if [ -n "${_OLD_VIRTUAL_PATH:-}" ] ; then
+        PATH="${_OLD_VIRTUAL_PATH:-}"
+        export PATH
+        unset _OLD_VIRTUAL_PATH
+    fi
+    if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ] ; then
+        PYTHONHOME="${_OLD_VIRTUAL_PYTHONHOME:-}"
+        export PYTHONHOME
+        unset _OLD_VIRTUAL_PYTHONHOME
+    fi
+
+    # This should detect bash and zsh, which have a hash command that must
+    # be called to get it to forget past commands.  Without forgetting
+    # past commands the $PATH changes we made may not be respected
+    if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
+        hash -r
+    fi
+
+    if [ -n "${_OLD_VIRTUAL_PS1:-}" ] ; then
+        PS1="${_OLD_VIRTUAL_PS1:-}"
+        export PS1
+        unset _OLD_VIRTUAL_PS1
+    fi
+
+    unset VIRTUAL_ENV
+    if [ ! "$1" = "nondestructive" ] ; then
+    # Self destruct!
+        unset -f deactivate
+    fi
+}
+
 do_start () {
     log_daemon_msg "Starting system $DAEMON_NAME daemon"
     touch /var/log/pikonek.log
@@ -31,7 +64,22 @@ do_start () {
     chown pikonek:pikonek /etc/pikonek/database/db.wifirouter
     export PYARMOR_LICENSE=/etc/pikonek/license/license.lic
     # activate venv
-    # source "$DIR/venv/bin/activate" &> /dev/null
+    deactivate nondestructive
+
+    VIRTUAL_ENV="/etc/pikonek/venv"
+    export VIRTUAL_ENV
+
+    _OLD_VIRTUAL_PATH="$PATH"
+    PATH="$VIRTUAL_ENV/bin:$PATH"
+    export PATH
+
+    # unset PYTHONHOME if set
+    # this will fail if PYTHONHOME is set to the empty string (which is bad anyway)
+    # could use `if (set -u; : $PYTHONHOME) ;` in bash
+    if [ -n "${PYTHONHOME:-}" ] ; then
+         _OLD_VIRTUAL_PYTHONHOME="${PYTHONHOME:-}"
+        unset PYTHONHOME
+    fi
     start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --startas $DAEMON -- $DAEMON_OPTS
     log_end_msg $?
 }
@@ -39,7 +87,7 @@ do_stop () {
     log_daemon_msg "Stopping system $DAEMON_NAME daemon"
     start-stop-daemon --stop --pidfile $PIDFILE --retry 10
     # deactivate venv
-    # deactivate &> /dev/null
+    deactivate
     log_end_msg $?
 }
 
