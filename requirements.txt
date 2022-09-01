@@ -13,7 +13,6 @@ Flask-RESTful==0.3.9
 Flask-SocketIO==5.2.0
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==1.0.1
-get-mac==0.8.3
 gevent==21.12.0
 gevent-websocket==0.10.1
 jsonschema==3.2.0
