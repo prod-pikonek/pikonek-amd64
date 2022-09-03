@@ -1,7 +1,6 @@
 alembic==1.7.7
 arpreq==0.3.3
 chardet==3.0.4
-cryptography==37.0.4
 Cython==0.29.32
 Flask==2.0.3
 Flask-Cors==3.0.10
