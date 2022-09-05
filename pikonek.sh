@@ -28,7 +28,7 @@ versionFunc() {
 adminFunc() {
   # export license
   export PYARMOR_LICENSE=/etc/pikonek/license/license.lic
-  "${PIKONEK_CORE_ADMIN_SCRIPT_DIR}"/venv/bin/python3 "${PIKONEK_CORE_ADMIN_SCRIPT_DIR}"/pikonekcli.py "${@:2}"
+  "${PIKONEK_CORE_ADMIN_SCRIPT_DIR}"/venv/bin/python3.7 "${PIKONEK_CORE_ADMIN_SCRIPT_DIR}"/pikonekcli.py "${@:2}"
 }
 
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env /etc/pikonek/venv/bin/python3
+#!/usr/bin/env /etc/pikonek/venv/bin/python3.7
 
 from pikonek.captive import main
 
