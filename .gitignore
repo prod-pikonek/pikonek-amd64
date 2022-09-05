@@ -127,4 +127,3 @@ start.py
 pikonekbin.py
 templates/public/portal_image/**
 pikonek/pytransform/*.c
-pikonek/pytransform/*.py
