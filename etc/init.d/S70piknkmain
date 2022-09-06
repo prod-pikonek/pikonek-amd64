@@ -21,6 +21,8 @@ set -e
 
 PIDFILE=/var/run/$DAEMON_NAME.pid
 
+. /etc/pikonek/configs/pikonekInit.cfg
+
 . /lib/lsb/init-functions
 
 deactivate () {
@@ -81,6 +83,15 @@ do_start () {
         unset PYTHONHOME
     fi
     start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --startas $DAEMON -- $DAEMON_OPTS
+
+    # stop services
+    if [ "$mosquitto" = "False" ]; then
+        /bin/systemctl stop mosquitto
+    else
+        /bin/systemctl stop mosquitto
+        /bin/systemctl start mosquitto
+    fi
+
     log_end_msg $?
 }
 do_stop () {
