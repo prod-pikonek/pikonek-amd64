@@ -19,6 +19,13 @@ main() {
     killall pppoe-server || true
     killall pppd || true
   fi
+
+  if [ "$sqm" = "True" ]; then
+    /usr/bin/sqm stop || true
+    /usr/bin/sqm start || true
+  else
+    /usr/bin/sqm stop || true
+  fi
 }
 
 main
