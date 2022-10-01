@@ -127,3 +127,6 @@ start.py
 pikonekbin.py
 templates/public/portal_image/**
 pikonek/pytransform/*.c
+configs/pppoe.yaml
+configs/sqm.yaml
+configs/*.tcconfig.yaml
