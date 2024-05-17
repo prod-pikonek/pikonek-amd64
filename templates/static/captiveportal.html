@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pikonek</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="jumbotron">
+          <h1 class="display-3">Pikonek</h1>
+          <p id= "captive-connect" class="lead">For better experience, please open your browser to connect.</p>
+          <p><a class="btn btn-lg btn-success" onclick="openApp()" role="button">OK</a></p>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+    <script>
+      var host = window.location.protocol + '//' + window.location.hostname;
+
+      var message = `For better experience, please open your browser and type ${host}`;
+
+      document.getElementById("captive-connect").innerHTML = message;
+
+      function openApp() {
+        window.location.replace("/");
+      }
+    </script>
+  </body>
+</html>
