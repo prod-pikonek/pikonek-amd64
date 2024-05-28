@@ -29,6 +29,7 @@ configs/pikonek_wpa_mapping.yaml
 configs/ngrok.yaml
 migrations/versions/**
 pihole/docker-compose.yaml
+vpn/docker-compose.yaml
 pihole/etc-dnsmasq.d
 pihole/etc-pihole
 localversions
